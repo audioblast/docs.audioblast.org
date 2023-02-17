@@ -15,7 +15,6 @@ github-repo: audioblast/docs.audioblast.org
 
 # About audioBlast
 
-## Usage 
 
 
 

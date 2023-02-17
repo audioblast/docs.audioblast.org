@@ -1,5 +1,4 @@
 about-audioblast
-usage
 introduction
 why-audioblast
 design-philosophy

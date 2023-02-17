@@ -75,8 +75,8 @@
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About audioBlast</a></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-audioblast"><i class="fa fa-check"></i><b>2.1</b> Why audioBlast</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#design-philosophy"><i class="fa fa-check"></i><b>2.2</b> Design Philosophy</a></li>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#design-philosophy"><i class="fa fa-check"></i><b>2.1</b> Design Philosophy</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#analyse-everything-once-in-advance"><i class="fa fa-check"></i><b>2.2</b> Analyse everything once, in advance</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="audioblastingest.html"><a href="audioblastingest.html"><i class="fa fa-check"></i><b>3</b> audioBlastIngest</a>
 <ul>
@@ -105,15 +105,59 @@
             <section class="normal" id="section-">
 <div id="introduction" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="why-audioblast" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Why audioBlast<a href="introduction.html#why-audioblast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (<code>#</code>) per .Rmd file.</p>
-</div>
-<div id="design-philosophy" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Design Philosophy<a href="introduction.html#design-philosophy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="design-philosophy" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Design Philosophy<a href="introduction.html#design-philosophy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The technical design of audioBlast pushes computation down the stack as far as is conveniently possible. Ideally this will often be the database. This results in a reduction in network traffic, which can be significant if returning a large number of analyses.</p>
 <p>Some core parts of the audioBlast system (i.e. the ingest process and analyse process) can communicate directly with the database, and all insertion or updating of records must be performed through one of these processes.</p>
-<p>All reading of data should be performed via the API (<a href="https://api.audioblast.org" class="uri">https://api.audioblast.org</a>). The API is a lightweight database wrapper that automatically handles pagination of results and caching of slow queries. Various utilities provide access to the API in different environments, including the sonicscrewdriver package for the R environment. The API is also used to provide the data search and discovery tools at <a href="https://audioblast.org" class="uri">https://audioblast.org</a>.</p>
+<p>In general, and for all end-user cases, reading of data should be performed via the API (<a href="https://api.audioblast.org" class="uri">https://api.audioblast.org</a>). The API is a lightweight database wrapper that automatically handles pagination of results and caching of slow queries. Various utilities provide access to the API in different environments, including the sonicscrewdriver package for the R environment. The API is also used to provide the data search and discovery tools at <a href="https://audioblast.org" class="uri">https://audioblast.org</a>.</p>
+<table style="width:100%;">
+<caption><span id="tab:unnamed-chunk-1">Table 2.1: </span>Simplified illustration of audioBlast abstraction layers from
+bottom to top.</caption>
+<colgroup>
+<col width="5%" />
+<col width="34%" />
+<col width="43%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Ingest</th>
+<th align="left">Analyse</th>
+<th align="left">API</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">MySQL</td>
+<td align="left">Triggers<br><br>INSERT<br><br>UPDATE</td>
+<td align="left">Stored Procedures<br><br>INSERT<br><br>UPDATE</td>
+<td align="left">SELECT</td>
+</tr>
+<tr class="even">
+<td align="left">R</td>
+<td align="left">r-dbi<br><br>abdb</td>
+<td align="left">r-dbi<br><br>abdb</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">API</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">API QueryBuilder</td>
+</tr>
+<tr class="even">
+<td align="left">Users</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">API Calls</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="analyse-everything-once-in-advance" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Analyse everything once, in advance<a href="introduction.html#analyse-everything-once-in-advance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Many bioacoustic and ecoacoustic studies make use of a standard set of analyses. These are computed in advance by audioBlast, allowing the analyses to be instantly available and searchable. An additional advantage is that the computational resource needed to compute analyses need only be performed once.</p>
 
 </div>
 </div>

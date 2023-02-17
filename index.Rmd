@@ -15,6 +15,6 @@ github-repo: audioblast/docs.audioblast.org
 
 # About audioBlast
 
-
+audioBlast is a project to make the world's collections of bioacoustic and ecoacoustic recordings findable, accessible, and searchable.
 
 

@@ -1,6 +1,7 @@
+tab:unnamed-chunk-1
 about-audioblast
 introduction
-why-audioblast
 design-philosophy
+analyse-everything-once-in-advance
 audioblastingest
 structure

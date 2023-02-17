@@ -89,13 +89,10 @@
 \hypertarget{about-audioblast}{%
 \chapter{About audioBlast}\label{about-audioblast}}
 
+audioBlast is a project to make the world's collections of bioacoustic and ecoacoustic recordings findable, accessible, and searchable.
+
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
-
-\hypertarget{why-audioblast}{%
-\section{Why audioBlast}\label{why-audioblast}}
-
-All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (\texttt{\#}) per .Rmd file.
 
 \hypertarget{design-philosophy}{%
 \section{Design Philosophy}\label{design-philosophy}}
@@ -104,7 +101,29 @@ The technical design of audioBlast pushes computation down the stack as far as i
 
 Some core parts of the audioBlast system (i.e.~the ingest process and analyse process) can communicate directly with the database, and all insertion or updating of records must be performed through one of these processes.
 
-All reading of data should be performed via the API (\url{https://api.audioblast.org}). The API is a lightweight database wrapper that automatically handles pagination of results and caching of slow queries. Various utilities provide access to the API in different environments, including the sonicscrewdriver package for the R environment. The API is also used to provide the data search and discovery tools at \url{https://audioblast.org}.
+In general, and for all end-user cases, reading of data should be performed via the API (\url{https://api.audioblast.org}). The API is a lightweight database wrapper that automatically handles pagination of results and caching of slow queries. Various utilities provide access to the API in different environments, including the sonicscrewdriver package for the R environment. The API is also used to provide the data search and discovery tools at \url{https://audioblast.org}.
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-1}Simplified illustration of audioBlast abstraction layers from 
+  bottom to top.}
+\centering
+\begin{tabular}[t]{llll}
+\toprule
+  & Ingest & Analyse & API\\
+\midrule
+MySQL & Triggers<br><br>INSERT<br><br>UPDATE & Stored Procedures<br><br>INSERT<br><br>UPDATE & SELECT\\
+R & r-dbi<br><br>abdb & r-dbi<br><br>abdb & \\
+API &  &  & API QueryBuilder\\
+Users &  &  & API Calls\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\hypertarget{analyse-everything-once-in-advance}{%
+\section{Analyse everything once, in advance}\label{analyse-everything-once-in-advance}}
+
+Many bioacoustic and ecoacoustic studies make use of a standard set of analyses. These are computed in advance by audioBlast, allowing the analyses to be instantly available and searchable. An additional advantage is that the computational resource needed to compute analyses need only be performed once.
 
 \hypertarget{audioblastingest}{%
 \chapter{audioBlastIngest}\label{audioblastingest}}

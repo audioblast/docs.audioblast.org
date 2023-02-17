@@ -1,13 +1,3 @@
-Welcome! 
+# docs.audioblast.org
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
-
-This template provides a skeleton file structure that you can edit to create your book. 
-
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
-
-Additional resources:
-
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
-
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
+This is the technical documentation for the [audioBlast](https://audioblast.org) project (not a user guide). It explains the architecture of the system and how it works for those involved in hosting, developing or contributing to the project. Contributions or requests for clarification, etc, are welcomed - however bug reports and feature requests are likely best submitted to other repositories in this organisation.

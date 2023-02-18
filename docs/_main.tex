@@ -226,6 +226,11 @@ Installation of the package requires the devtools package.
 
 The Task Queue System maintains a list of outstanding analysis tasks in the database and is responsible for assigning tasks to analysis processes.
 
+\hypertarget{implementation}{%
+\section{Implementation}\label{implementation}}
+
+The system is implemented as two tables in the databse, \texttt{tasks} and \texttt{tasks-progress}, and the stored procedure \texttt{get-tasks()}.
+
   \bibliography{book.bib,packages.bib}
 
 \end{document}

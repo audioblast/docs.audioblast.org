@@ -156,7 +156,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.2" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#from-r-working-directory"><i class="fa fa-check"></i><b>4.3.2</b> From R working directory</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html"><i class="fa fa-check"></i><b>5</b> The Task Queue System</a></li>
+<li class="chapter" data-level="5" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html"><i class="fa fa-check"></i><b>5</b> The Task Queue System</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#implementation"><i class="fa fa-check"></i><b>5.1</b> Implementation</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/audioblast/docs.audioblast.org" target="blank">Published with bookdown</a></li>
@@ -181,7 +184,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-task-queue-system" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> The Task Queue System<a href="the-task-queue-system.html#the-task-queue-system" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The Task Queue System maintains a list of outstanding analysis tasks in the database and is responsible for assigning tasks to analysis processes.</p>
+<div id="implementation" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Implementation<a href="the-task-queue-system.html#implementation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The system is implemented as two tables in the databse, <code>tasks</code> and <code>tasks-progress</code>, and the stored procedure <code>get-tasks()</code>.</p>
 
+</div>
 </div>
             </section>
 

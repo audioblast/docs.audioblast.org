@@ -1,0 +1,28 @@
+# audioBlastAnalyse
+audioBlastAnalyse is an R package that handles the analysis of recordings. While some analyses (e.g. annotations) can be imported during the ingest process this is not true for all sources of recordings.
+
+## Requirements
+The analysis system requires a computer running the R environment for statistical computing. The package will import all dependencies on installation.
+
+The package is tested on recent MacOS, Linux, and Windows systems.
+
+If the analysis system is to write directly to the audioBlast database then it must additionally be on the NHM network (including via the VPN).
+
+## Development
+The package is hosted on the audioBlast GitHub at https://github.com/audioblast/audioBlastAnalyse.
+
+## Installation
+Installation of the package requires the devtools package.
+```{r, eval=FALSE}
+install.packages("devtools")
+```
+
+### From GitHub
+```{r, eval=FALSE}
+devtools::install_github("audioblast/audioBlastAnalyse")
+```
+
+### From R working directory
+```{r, eval=FALSE}
+devtools::install()
+```

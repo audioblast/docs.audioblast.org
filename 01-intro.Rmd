@@ -18,7 +18,8 @@ In general, and for all end-user cases, reading of data should be performed via 
     users <- c("", "", "API Calls")
   )
 rownames(layers) <- c("MySQL", "R", "API", "Users")
-  colnames(layers) <- c("Ingest", "Analyse", "API")
+colnames(layers) <- c("Ingest", "Analyse", "API")
+
 knitr::kable(
   layers, booktabs = TRUE,
   caption = 'Simplified illustration of audioBlast abstraction layers from 
@@ -29,3 +30,4 @@ knitr::kable(
 ## Analyse everything once, in advance
 
 Many bioacoustic and ecoacoustic studies make use of a standard set of analyses. These are computed in advance by audioBlast, allowing the analyses to be instantly available and searchable. An additional advantage is that the computational resource needed to compute analyses need only be performed once.
+

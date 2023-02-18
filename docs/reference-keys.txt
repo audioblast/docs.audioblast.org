@@ -5,3 +5,9 @@ design-philosophy
 analyse-everything-once-in-advance
 audioblastingest
 structure
+audioblastanalyse
+requirements
+development
+installation
+from-github
+from-r-working-directory

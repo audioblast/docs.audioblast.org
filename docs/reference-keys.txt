@@ -11,3 +11,4 @@ development
 installation
 from-github
 from-r-working-directory
+the-task-queue-system

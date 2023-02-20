@@ -13,3 +13,7 @@ from-github
 from-r-working-directory
 the-task-queue-system
 implementation
+tasks-table
+tasks-progress-table
+get-tasks-stored-procedure
+delete-task-stored-proecure

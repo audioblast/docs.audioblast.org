@@ -2,7 +2,7 @@
 The Task Queue System maintains a list of outstanding analysis tasks in the database and is responsible for assigning tasks to analysis processes.
 
 ## Implementation
-The system is implemented as two tables in the databse, `tasks` and `tasks-progress`, and the stored procedure `get-tasks()`.
+The system is implemented as two tables in the database, `tasks` and `tasks-progress`. Tasks are assigned using the stored procedure `get-tasks()` for local files, or `get-tasks-by-file()` for web files. The `get-tasks()` procedure will assign `n` random tasks to the analysis process, whereas `get-tasks-by-file()` will return all outstanding tasks for a given file. The latter procedure removes the need for repeated downloads of the same file.
 
 ### `tasks` table
 The table `tasks` is a list of outstanding analysis tasks. It is populated automatically by triggers on the `recordings` and `recordings-calcuated` table. Analysis tasks are grouped into sections (recordings_calculated, sounscapes_minute and soundscpaes_second). The `recordings-calculaed` table has a TINYINT column for each of these, that is set to `1` once the task is completed.
@@ -11,7 +11,10 @@ The table `tasks` is a list of outstanding analysis tasks. It is populated autom
 The table `tasks-progress` is populated by the stored procedure `get-tasks()` when an analysis process requests outstanding tasks. It is used to prevent the same task being analysed to multiple analysis processes. Tasks from an unresponsive process (e.g. a process which has crashed) can be reassigned after an hour of inactivity by that process.
 
 ### `get-tasks()` stored procedure
-The stored procedure `get-tasks(process_id, n, source)` is used to assign `n` tasks to the analysis process `process_id`. It inserts `n` random unassigned tasks from the `tasks` table into the `tasks-progress` table along with the process_id and the current timestamp. It returns via a SELECT statement these tasks.
+The stored procedure `get-tasks(process_id, n, source)` is used to assign `n` tasks to the analysis process `process_id`. Initially a call to `_quickMaintain()` is performed to deallocate time-expired tasks. It inserts `n` random unassigned tasks from the `tasks` table into the `tasks-progress` table along with the process_id and the current timestamp. It returns via a SELECT statement these tasks.
+
+### `get-tasks-by-file()` stored procedure
+Initially a call to `_quickMaintain()` is performed to deallocate time-expired tasks. The stored procedure `get-tasks(process_id, source)` then assigns all outstanding tasks for a randomly chosen file to the analysis process `process_id`. It inserts these tasks from the `tasks` table into the `tasks-progress` table along with the process_id and the current timestamp. It returns via a SELECT statement these tasks.
 
 ### `delete-task()` stored proecure
 The stored procedure `delete-task(process_id, source, id, task)` marks a task as complete by deleting it from the `tasks` table. A trigger in the `tasks` table will delete the matching row from `tasks-progress`. The started time of any remaining tasks assigned to the same `process_id` in the `tasks-progess` table will be updated to the current time. A call is made to the stored procedure `_quickMaintain()` which will perform routine maintenance tasks, including removing any expired tasks in the `tasks-progress` table.

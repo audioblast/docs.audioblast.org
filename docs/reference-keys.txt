@@ -16,4 +16,5 @@ implementation
 tasks-table
 tasks-progress-table
 get-tasks-stored-procedure
+get-tasks-by-file-stored-procedure
 delete-task-stored-proecure

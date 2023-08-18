@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 audioBlastIngest | docs.audioblast.org</title>
   <meta name="description" content="Documentation of the audioBlast system." />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 audioBlastIngest | docs.audioblast.org" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ed Baker" />
 
 
-<meta name="date" content="2023-03-03" />
+<meta name="date" content="2023-08-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -190,7 +194,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="audioblastingest" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> audioBlastIngest<a href="audioblastingest.html#audioblastingest" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>What is it</p>
+<p>The ingest tools are used to discover recordings or other bioacoustic data published by third parties and bring them into the audioBlast system. Creating an ingest task is a simple three step process.</p>
+<ol style="list-style-type: decimal">
+<li><p>Third party publishes data online.</p></li>
+<li><p>audioBlast team work with third party to create an API module to map the published data on to audioBlast data structures.</p></li>
+<li><p>The audioBlastIngest package handles the import of the data.</p></li>
+</ol>
+<p>Once the data is imported the audio files can be analysed on audioBlast infrastructure if required.</p>
+<p>Updates without changes to the incoming data structure are handled periodically by the ingest server.</p>
 <div id="structure" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Structure<a href="audioblastingest.html#structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 

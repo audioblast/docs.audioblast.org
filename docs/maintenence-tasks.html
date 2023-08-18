@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 audioBlastIngest | docs.audioblast.org</title>
+  <title>Chapter 7 Maintenence tasks | docs.audioblast.org</title>
   <meta name="description" content="Documentation of the audioBlast system." />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 audioBlastIngest | docs.audioblast.org" />
+  <meta property="og:title" content="Chapter 7 Maintenence tasks | docs.audioblast.org" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Documentation of the audioBlast system." />
   <meta name="github-repo" content="audioblast/docs.audioblast.org" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 audioBlastIngest | docs.audioblast.org" />
+  <meta name="twitter:title" content="Chapter 7 Maintenence tasks | docs.audioblast.org" />
   
   <meta name="twitter:description" content="Documentation of the audioBlast system." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="audioblastanalyse.html"/>
+<link rel="prev" href="audioblast.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -197,18 +197,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="audioblastingest" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> audioBlastIngest<a href="audioblastingest.html#audioblastingest" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The ingest tools are used to discover recordings or other bioacoustic data published by third parties and bring them into the audioBlast system. Creating an ingest task is a simple three step process.</p>
-<ol style="list-style-type: decimal">
-<li><p>Third party publishes data online.</p></li>
-<li><p>audioBlast team work with third party to create an API module to map the published data on to audioBlast data structures.</p></li>
-<li><p>The audioBlastIngest package handles the import of the data.</p></li>
-</ol>
-<p>Once the data is imported the audio files can be analysed on audioBlast infrastructure if required.</p>
-<p>Updates without changes to the incoming data structure are handled periodically by the ingest server.</p>
-<div id="structure" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Structure<a href="audioblastingest.html#structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="maintenence-tasks" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Maintenence tasks<a href="maintenence-tasks.html#maintenence-tasks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="cron-tasks" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> cron tasks<a href="maintenence-tasks.html#cron-tasks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Every 15 minutes a cron job on the unp-audio-2 virtual machine updates the total analysis counts by calling the API endpoint /standalone/analysis/fetch_analysis_counts/ without caching (?cache=0).</p>
+<p>Other slow-running queries that impact the speed of the user interface can be added here if necessary.</p>
 
 </div>
 </div>
@@ -217,8 +211,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="audioblastanalyse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="audioblast.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -249,7 +243,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/02-ingest.Rmd",
+"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/80-maintain.Rmd",
 "text": "Edit"
 },
 "history": {

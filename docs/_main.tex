@@ -273,6 +273,21 @@ Initially a call to \texttt{\_quickMaintain()} is performed to deallocate time-e
 
 The stored procedure \texttt{delete-task(process\_id,\ source,\ id,\ task)} marks a task as complete by deleting it from the \texttt{tasks} table. A trigger in the \texttt{tasks} table will delete the matching row from \texttt{tasks-progress}. The started time of any remaining tasks assigned to the same \texttt{process\_id} in the \texttt{tasks-progess} table will be updated to the current time. A call is made to the stored procedure \texttt{\_quickMaintain()} which will perform routine maintenance tasks, including removing any expired tasks in the \texttt{tasks-progress} table.
 
+\hypertarget{audioblast.org}{%
+\chapter{audioblast.org}\label{audioblast.org}}
+
+The website provides a convenient search and browsing interface making use of api.audioblast.org. This server is hosted by the Natural History Museum, London.
+
+\hypertarget{maintenence-tasks}{%
+\chapter{Maintenence tasks}\label{maintenence-tasks}}
+
+\hypertarget{cron-tasks}{%
+\section{cron tasks}\label{cron-tasks}}
+
+Every 15 minutes a cron job on the unp-audio-2 virtual machine updates the total analysis counts by calling the API endpoint /standalone/analysis/fetch\_analysis\_counts/ without caching (?cache=0).
+
+Other slow-running queries that impact the speed of the user interface can be added here if necessary.
+
   \bibliography{book.bib,packages.bib}
 
 \end{document}

@@ -1,0 +1,6 @@
+# Maintenence tasks
+
+## cron tasks
+Every 15 minutes a cron job on the unp-audio-2 virtual machine updates the total analysis counts by calling the API endpoint /standalone/analysis/fetch_analysis_counts/ without caching (?cache=0).
+
+Other slow-running queries that impact the speed of the user interface can be added here if necessary.

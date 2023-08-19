@@ -120,7 +120,7 @@
 
 \title{docs.audioblast.org}
 \author{Ed Baker}
-\date{2023-08-18}
+\date{2023-08-19}
 
 \begin{document}
 \maketitle
@@ -243,8 +243,10 @@ Installation of the package requires the devtools package.
 
 The Task Queue System maintains a list of outstanding analysis tasks in the database and is responsible for assigning tasks to analysis processes.
 
-\hypertarget{implementation}{%
-\section{Implementation}\label{implementation}}
+The database implementation is designed so that it can be utilised by either audioBlastAnalyse or in the future by an analysis package in another language (e.g.~a Python analysis suite).
+
+\hypertarget{database-implementation}{%
+\section{Database Implementation}\label{database-implementation}}
 
 The system is implemented as two tables in the database, \texttt{tasks} and \texttt{tasks-progress}. Tasks are assigned using the stored procedure \texttt{get-tasks()} for local files, or \texttt{get-tasks-by-file()} for web files. The \texttt{get-tasks()} procedure will assign \texttt{n} random tasks to the analysis process, whereas \texttt{get-tasks-by-file()} will return all outstanding tasks for a given file. The latter procedure removes the need for repeated downloads of the same file.
 
@@ -272,6 +274,39 @@ Initially a call to \texttt{\_quickMaintain()} is performed to deallocate time-e
 \subsection{\texorpdfstring{\texttt{delete-task()} stored proecure}{delete-task() stored proecure}}\label{delete-task-stored-proecure}}
 
 The stored procedure \texttt{delete-task(process\_id,\ source,\ id,\ task)} marks a task as complete by deleting it from the \texttt{tasks} table. A trigger in the \texttt{tasks} table will delete the matching row from \texttt{tasks-progress}. The started time of any remaining tasks assigned to the same \texttt{process\_id} in the \texttt{tasks-progess} table will be updated to the current time. A call is made to the stored procedure \texttt{\_quickMaintain()} which will perform routine maintenance tasks, including removing any expired tasks in the \texttt{tasks-progress} table.
+
+\hypertarget{audioblastanalyse-implementation}{%
+\section{audioBlastAnalyse Implementation}\label{audioblastanalyse-implementation}}
+
+The analysis suite audioBlastAnalyse has several functions that implement this task queue in the R language.
+
+All these functions require a database connector (\texttt{db}) as a parameter, and a unique \texttt{process\_id} for the analysis process. In the majority of cases these functions will be called automatically from within a call to the main \texttt{analyse()} function, where the database connector will already be configured and a process identifier is automatically generated.
+
+\hypertarget{legacy-mode}{%
+\subsection{Legacy mode}\label{legacy-mode}}
+
+On some older Linux operating systems the RMariaDB package and libraries it builds against have issues dealing with stored procedures. For the time being a legacy mode is provided that implements the stored procedures as a sequence of queries. Setting \texttt{legacy=TRUE} as a parameter to either of the fetch queries will activate this mode.
+
+\hypertarget{getting-tasks}{%
+\subsection{Getting tasks}\label{getting-tasks}}
+
+The \texttt{get-tasks()} stored procedure is accessed by using \texttt{fetchDownloadableRecordings()}, and \texttt{get-tasks-by-file()} by using \texttt{fetchDownloadableRecordings()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fetchDownloadableRecordings}\NormalTok{(db, source, process\_id, }\AttributeTok{legacy=}\ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{fetchUnanalysedRecordings}\NormalTok{(db, source, process\_id, }\AttributeTok{legacy=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{removing-completed-tasks}{%
+\subsection{Removing completed tasks}\label{removing-completed-tasks}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{deleteToDo}\NormalTok{(db, source, id, task, process\_id)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{audioblast.org}{%
 \chapter{audioblast.org}\label{audioblast.org}}

@@ -1,7 +1,9 @@
 # The Task Queue System
 The Task Queue System maintains a list of outstanding analysis tasks in the database and is responsible for assigning tasks to analysis processes.
 
-## Implementation
+The database implementation is designed so that it can be utilised by either audioBlastAnalyse or in the future by an analysis package in another language (e.g. a Python analysis suite).
+
+## Database Implementation
 The system is implemented as two tables in the database, `tasks` and `tasks-progress`. Tasks are assigned using the stored procedure `get-tasks()` for local files, or `get-tasks-by-file()` for web files. The `get-tasks()` procedure will assign `n` random tasks to the analysis process, whereas `get-tasks-by-file()` will return all outstanding tasks for a given file. The latter procedure removes the need for repeated downloads of the same file.
 
 ### `tasks` table
@@ -18,3 +20,24 @@ Initially a call to `_quickMaintain()` is performed to deallocate time-expired t
 
 ### `delete-task()` stored proecure
 The stored procedure `delete-task(process_id, source, id, task)` marks a task as complete by deleting it from the `tasks` table. A trigger in the `tasks` table will delete the matching row from `tasks-progress`. The started time of any remaining tasks assigned to the same `process_id` in the `tasks-progess` table will be updated to the current time. A call is made to the stored procedure `_quickMaintain()` which will perform routine maintenance tasks, including removing any expired tasks in the `tasks-progress` table.
+
+## audioBlastAnalyse Implementation
+The analysis suite audioBlastAnalyse has several functions that implement this task queue in the R language.
+
+All these functions require a database connector (`db`) as a parameter, and a unique `process_id` for the analysis process. In the majority of cases these functions will be called automatically from within a call to the main `analyse()` function, where the database connector will already be configured and a process identifier is automatically generated.
+
+### Legacy mode
+On some older Linux operating systems the RMariaDB package and libraries it builds against have issues dealing with stored procedures. For the time being a legacy mode is provided that implements the stored procedures as a sequence of queries. Setting `legacy=TRUE` as a parameter to either of the fetch queries will activate this mode.
+
+### Getting tasks
+The `get-tasks()` stored procedure is accessed by using `fetchDownloadableRecordings()`, and `get-tasks-by-file()` by using `fetchDownloadableRecordings()`.
+
+````{R, eval=FALSE}
+fetchDownloadableRecordings(db, source, process_id, legacy=FALSE)
+fetchUnanalysedRecordings(db, source, process_id, legacy=FALSE)
+````
+
+### Removing completed tasks
+````{R, eval=FALSE}
+deleteToDo(db, source, id, task, process_id)
+````

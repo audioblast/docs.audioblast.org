@@ -12,12 +12,16 @@ installation
 from-github
 from-r-working-directory
 the-task-queue-system
-implementation
+database-implementation
 tasks-table
 tasks-progress-table
 get-tasks-stored-procedure
 get-tasks-by-file-stored-procedure
 delete-task-stored-proecure
+audioblastanalyse-implementation
+legacy-mode
+getting-tasks
+removing-completed-tasks
 audioblast.org
 maintenence-tasks
 cron-tasks

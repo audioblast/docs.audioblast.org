@@ -11,6 +11,7 @@ development
 installation
 from-github
 from-r-working-directory
+adding-new-analyses
 the-task-queue-system
 database-implementation
 tasks-table

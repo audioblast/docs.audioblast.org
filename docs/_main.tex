@@ -120,7 +120,7 @@
 
 \title{docs.audioblast.org}
 \author{Ed Baker}
-\date{2023-08-19}
+\date{2023-08-21}
 
 \begin{document}
 \maketitle
@@ -237,6 +237,25 @@ Installation of the package requires the devtools package.
 \NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{adding-new-analyses}{%
+\chapter{Adding new analyses}\label{adding-new-analyses}}
+
+The process for adding new analyses is:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a new database table for storing the analysis, following the column tyes and names of `analysis-aci'.
+\item
+  Add the analysis table to the deleteAllAnalyses() function of audioBlastAnalyse R package.
+\item
+  Implement the analysis in audioBlastAnalyse R package.
+\item
+  Implement a module for \url{https://api.audioblast.org} to provide API access to the analysis.
+\item
+  Make arrangements for existing recordings to be queued for analysis if required.
+\end{enumerate}
 
 \hypertarget{the-task-queue-system}{%
 \chapter{The Task Queue System}\label{the-task-queue-system}}

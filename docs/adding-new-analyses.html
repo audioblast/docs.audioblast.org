@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Introduction | docs.audioblast.org</title>
+  <title>Chapter 5 Adding new analyses | docs.audioblast.org</title>
   <meta name="description" content="Documentation of the audioBlast system." />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Introduction | docs.audioblast.org" />
+  <meta property="og:title" content="Chapter 5 Adding new analyses | docs.audioblast.org" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Documentation of the audioBlast system." />
   <meta name="github-repo" content="audioblast/docs.audioblast.org" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Introduction | docs.audioblast.org" />
+  <meta name="twitter:title" content="Chapter 5 Adding new analyses | docs.audioblast.org" />
   
   <meta name="twitter:description" content="Documentation of the audioBlast system." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="audioblastingest.html"/>
+<link rel="prev" href="audioblastanalyse.html"/>
+<link rel="next" href="the-task-queue-system.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -204,71 +204,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="design-philosophy" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Design Philosophy<a href="introduction.html#design-philosophy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The technical design of audioBlast pushes computation down the stack as far as is conveniently possible. Ideally this will often be the database. This results in a reduction in network traffic, which can be significant if returning a large number of analyses.</p>
-<p>Some core parts of the audioBlast system (i.e. the ingest process and analyse process) can communicate directly with the database, and all insertion or updating of records must be performed through one of these processes.</p>
-<p>In general, and for all end-user cases, reading of data should be performed via the API (<a href="https://api.audioblast.org" class="uri">https://api.audioblast.org</a>). The API is a lightweight database wrapper that automatically handles pagination of results and caching of slow queries. Various utilities provide access to the API in different environments, including the sonicscrewdriver package for the R environment. The API is also used to provide the data search and discovery tools at <a href="https://audioblast.org" class="uri">https://audioblast.org</a>.</p>
-<table style="width:100%;">
-<caption><span id="tab:unnamed-chunk-1">Table 2.1: </span>Simplified illustration of audioBlast abstraction layers from
-bottom to top.</caption>
-<colgroup>
-<col width="5%" />
-<col width="34%" />
-<col width="43%" />
-<col width="16%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Ingest</th>
-<th align="left">Analyse</th>
-<th align="left">API</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">MySQL</td>
-<td align="left">Triggers<br><br>INSERT<br><br>UPDATE</td>
-<td align="left">Stored Procedures<br><br>INSERT<br><br>UPDATE</td>
-<td align="left">SELECT</td>
-</tr>
-<tr class="even">
-<td align="left">R</td>
-<td align="left">r-dbi<br><br>abdb</td>
-<td align="left">r-dbi<br><br>abdb</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left">API</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">API QueryBuilder</td>
-</tr>
-<tr class="even">
-<td align="left">Users</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">API Calls</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="analyse-everything-once-in-advance" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Analyse everything once, in advance<a href="introduction.html#analyse-everything-once-in-advance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Many bioacoustic and ecoacoustic studies make use of a standard set of analyses. These are computed in advance by audioBlast, allowing the analyses to be instantly available and searchable. An additional advantage is that the computational resource needed to compute analyses need only be performed once.</p>
+<div id="adding-new-analyses" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Adding new analyses<a href="adding-new-analyses.html#adding-new-analyses" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The process for adding new analyses is:</p>
+<ol style="list-style-type: decimal">
+<li><p>Create a new database table for storing the analysis, following the column tyes and names of ‘analysis-aci’.</p></li>
+<li><p>Add the analysis table to the deleteAllAnalyses() function of audioBlastAnalyse R package.</p></li>
+<li><p>Implement the analysis in audioBlastAnalyse R package.</p></li>
+<li><p>Implement a module for <a href="https://api.audioblast.org" class="uri">https://api.audioblast.org</a> to provide API access to the analysis.</p></li>
+<li><p>Make arrangements for existing recordings to be queued for analysis if required.</p></li>
+</ol>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="audioblastingest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="audioblastanalyse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-task-queue-system.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -299,7 +253,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/01-intro.Rmd",
+"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/11-adding_analyses.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,7 +4,7 @@ The ingest service is responsible for bringing data about recordings, deployment
 Note: The database generates analysis tasks using triggers as data is inserted or updated, however the analyses are performed by a separate processes to the ingest.
 
 ## Data sources
-=======
+
 The ingest tools are used to discover recordings or other bioacoustic data published by third parties and bring them into the audioBlast system. Creating an ingest task is a simple three step process.
 
 1. Third party publishes data online.

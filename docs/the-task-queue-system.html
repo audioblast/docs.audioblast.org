@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 The Task Queue System | docs.audioblast.org</title>
+  <title>Chapter 6 The Task Queue System | docs.audioblast.org</title>
   <meta name="description" content="Documentation of the audioBlast system." />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 The Task Queue System | docs.audioblast.org" />
+  <meta property="og:title" content="Chapter 6 The Task Queue System | docs.audioblast.org" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Documentation of the audioBlast system." />
   <meta name="github-repo" content="audioblast/docs.audioblast.org" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 The Task Queue System | docs.audioblast.org" />
+  <meta name="twitter:title" content="Chapter 6 The Task Queue System | docs.audioblast.org" />
   
   <meta name="twitter:description" content="Documentation of the audioBlast system." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Ed Baker" />
 
 
-<meta name="date" content="2023-03-03" />
+<meta name="date" content="2023-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -144,27 +148,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="audioblastingest.html"><a href="audioblastingest.html"><i class="fa fa-check"></i><b>3</b> audioBlastIngest</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="audioblastingest.html"><a href="audioblastingest.html#structure"><i class="fa fa-check"></i><b>3.1</b> Structure</a></li>
+<li class="chapter" data-level="3.1" data-path="audioblastingest.html"><a href="audioblastingest.html#data-sources"><i class="fa fa-check"></i><b>3.1</b> Data sources</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html"><i class="fa fa-check"></i><b>4</b> audioBlastAnalyse</a>
+<li class="chapter" data-level="4" data-path="mapping-columns.html"><a href="mapping-columns.html"><i class="fa fa-check"></i><b>4</b> Mapping columns</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#requirements"><i class="fa fa-check"></i><b>4.1</b> Requirements</a></li>
-<li class="chapter" data-level="4.2" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#development"><i class="fa fa-check"></i><b>4.2</b> Development</a></li>
-<li class="chapter" data-level="4.3" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#installation"><i class="fa fa-check"></i><b>4.3</b> Installation</a>
+<li class="chapter" data-level="4.1" data-path="mapping-columns.html"><a href="mapping-columns.html#optional-processing-done-by-audioblast"><i class="fa fa-check"></i><b>4.1</b> Optional processing done by audioBlast</a></li>
+<li class="chapter" data-level="4.2" data-path="mapping-columns.html"><a href="mapping-columns.html#specifying-processors"><i class="fa fa-check"></i><b>4.2</b> Specifying processors</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#from-github"><i class="fa fa-check"></i><b>4.3.1</b> From GitHub</a></li>
-<li class="chapter" data-level="4.3.2" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#from-r-working-directory"><i class="fa fa-check"></i><b>4.3.2</b> From R working directory</a></li>
+<li class="chapter" data-level="4.2.1" data-path="mapping-columns.html"><a href="mapping-columns.html#sourcer-automatically-prepred-a-source-column"><i class="fa fa-check"></i><b>4.2.1</b> SourceR: Automatically prepred a source column</a></li>
+<li class="chapter" data-level="4.2.2" data-path="mapping-columns.html"><a href="mapping-columns.html#date2dateantime-date-and-time-mapping"><i class="fa fa-check"></i><b>4.2.2</b> date2dateAnTime(): Date and time mapping</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html"><i class="fa fa-check"></i><b>5</b> The Task Queue System</a>
+<li class="chapter" data-level="5" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html"><i class="fa fa-check"></i><b>5</b> audioBlastAnalyse</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#implementation"><i class="fa fa-check"></i><b>5.1</b> Implementation</a>
+<li class="chapter" data-level="5.1" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#requirements"><i class="fa fa-check"></i><b>5.1</b> Requirements</a></li>
+<li class="chapter" data-level="5.2" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#development"><i class="fa fa-check"></i><b>5.2</b> Development</a></li>
+<li class="chapter" data-level="5.3" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#installation"><i class="fa fa-check"></i><b>5.3</b> Installation</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#tasks-table"><i class="fa fa-check"></i><b>5.1.1</b> <code>tasks</code> table</a></li>
-<li class="chapter" data-level="5.1.2" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#tasks-progress-table"><i class="fa fa-check"></i><b>5.1.2</b> <code>tasks-progress</code> table</a></li>
-<li class="chapter" data-level="5.1.3" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#get-tasks-stored-procedure"><i class="fa fa-check"></i><b>5.1.3</b> <code>get-tasks()</code> stored procedure</a></li>
-<li class="chapter" data-level="5.1.4" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#get-tasks-by-file-stored-procedure"><i class="fa fa-check"></i><b>5.1.4</b> <code>get-tasks-by-file()</code> stored procedure</a></li>
-<li class="chapter" data-level="5.1.5" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#delete-task-stored-proecure"><i class="fa fa-check"></i><b>5.1.5</b> <code>delete-task()</code> stored proecure</a></li>
+<li class="chapter" data-level="5.3.1" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#from-github"><i class="fa fa-check"></i><b>5.3.1</b> From GitHub</a></li>
+<li class="chapter" data-level="5.3.2" data-path="audioblastanalyse.html"><a href="audioblastanalyse.html#from-r-working-directory"><i class="fa fa-check"></i><b>5.3.2</b> From R working directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html"><i class="fa fa-check"></i><b>6</b> The Task Queue System</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#implementation"><i class="fa fa-check"></i><b>6.1</b> Implementation</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#tasks-table"><i class="fa fa-check"></i><b>6.1.1</b> <code>tasks</code> table</a></li>
+<li class="chapter" data-level="6.1.2" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#tasks-progress-table"><i class="fa fa-check"></i><b>6.1.2</b> <code>tasks-progress</code> table</a></li>
+<li class="chapter" data-level="6.1.3" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#get-tasks-stored-procedure"><i class="fa fa-check"></i><b>6.1.3</b> <code>get-tasks()</code> stored procedure</a></li>
+<li class="chapter" data-level="6.1.4" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#get-tasks-by-file-stored-procedure"><i class="fa fa-check"></i><b>6.1.4</b> <code>get-tasks-by-file()</code> stored procedure</a></li>
+<li class="chapter" data-level="6.1.5" data-path="the-task-queue-system.html"><a href="the-task-queue-system.html#delete-task-stored-proecure"><i class="fa fa-check"></i><b>6.1.5</b> <code>delete-task()</code> stored proecure</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -188,30 +201,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-task-queue-system" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> The Task Queue System<a href="the-task-queue-system.html#the-task-queue-system" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="the-task-queue-system" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> The Task Queue System<a href="the-task-queue-system.html#the-task-queue-system" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The Task Queue System maintains a list of outstanding analysis tasks in the database and is responsible for assigning tasks to analysis processes.</p>
-<div id="implementation" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Implementation<a href="the-task-queue-system.html#implementation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="implementation" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Implementation<a href="the-task-queue-system.html#implementation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The system is implemented as two tables in the database, <code>tasks</code> and <code>tasks-progress</code>. Tasks are assigned using the stored procedure <code>get-tasks()</code> for local files, or <code>get-tasks-by-file()</code> for web files. The <code>get-tasks()</code> procedure will assign <code>n</code> random tasks to the analysis process, whereas <code>get-tasks-by-file()</code> will return all outstanding tasks for a given file. The latter procedure removes the need for repeated downloads of the same file.</p>
-<div id="tasks-table" class="section level3 hasAnchor" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> <code>tasks</code> table<a href="the-task-queue-system.html#tasks-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tasks-table" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> <code>tasks</code> table<a href="the-task-queue-system.html#tasks-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The table <code>tasks</code> is a list of outstanding analysis tasks. It is populated automatically by triggers on the <code>recordings</code> and <code>recordings-calcuated</code> table. Analysis tasks are grouped into sections (recordings_calculated, sounscapes_minute and soundscpaes_second). The <code>recordings-calculaed</code> table has a TINYINT column for each of these, that is set to <code>1</code> once the task is completed.</p>
 </div>
-<div id="tasks-progress-table" class="section level3 hasAnchor" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> <code>tasks-progress</code> table<a href="the-task-queue-system.html#tasks-progress-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tasks-progress-table" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> <code>tasks-progress</code> table<a href="the-task-queue-system.html#tasks-progress-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The table <code>tasks-progress</code> is populated by the stored procedure <code>get-tasks()</code> when an analysis process requests outstanding tasks. It is used to prevent the same task being analysed to multiple analysis processes. Tasks from an unresponsive process (e.g. a process which has crashed) can be reassigned after an hour of inactivity by that process.</p>
 </div>
-<div id="get-tasks-stored-procedure" class="section level3 hasAnchor" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> <code>get-tasks()</code> stored procedure<a href="the-task-queue-system.html#get-tasks-stored-procedure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="get-tasks-stored-procedure" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> <code>get-tasks()</code> stored procedure<a href="the-task-queue-system.html#get-tasks-stored-procedure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The stored procedure <code>get-tasks(process_id, n, source)</code> is used to assign <code>n</code> tasks to the analysis process <code>process_id</code>. Initially a call to <code>_quickMaintain()</code> is performed to deallocate time-expired tasks. It inserts <code>n</code> random unassigned tasks from the <code>tasks</code> table into the <code>tasks-progress</code> table along with the process_id and the current timestamp. It returns via a SELECT statement these tasks.</p>
 </div>
-<div id="get-tasks-by-file-stored-procedure" class="section level3 hasAnchor" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> <code>get-tasks-by-file()</code> stored procedure<a href="the-task-queue-system.html#get-tasks-by-file-stored-procedure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="get-tasks-by-file-stored-procedure" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> <code>get-tasks-by-file()</code> stored procedure<a href="the-task-queue-system.html#get-tasks-by-file-stored-procedure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Initially a call to <code>_quickMaintain()</code> is performed to deallocate time-expired tasks. The stored procedure <code>get-tasks(process_id, source)</code> then assigns all outstanding tasks for a randomly chosen file to the analysis process <code>process_id</code>. It inserts these tasks from the <code>tasks</code> table into the <code>tasks-progress</code> table along with the process_id and the current timestamp. It returns via a SELECT statement these tasks.</p>
 </div>
-<div id="delete-task-stored-proecure" class="section level3 hasAnchor" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> <code>delete-task()</code> stored proecure<a href="the-task-queue-system.html#delete-task-stored-proecure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="delete-task-stored-proecure" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> <code>delete-task()</code> stored proecure<a href="the-task-queue-system.html#delete-task-stored-proecure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The stored procedure <code>delete-task(process_id, source, id, task)</code> marks a task as complete by deleting it from the <code>tasks</code> table. A trigger in the <code>tasks</code> table will delete the matching row from <code>tasks-progress</code>. The started time of any remaining tasks assigned to the same <code>process_id</code> in the <code>tasks-progess</code> table will be updated to the current time. A call is made to the stored procedure <code>_quickMaintain()</code> which will perform routine maintenance tasks, including removing any expired tasks in the <code>tasks-progress</code> table.</p>
 
 </div>

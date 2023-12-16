@@ -4,7 +4,6 @@ introduction
 design-philosophy
 analyse-everything-once-in-advance
 audioblastingest
-data-sources
 mapping-columns
 optional-processing-done-by-audioblast
 specifying-processors

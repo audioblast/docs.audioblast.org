@@ -1,0 +1,13 @@
+# Adding new analyses
+
+The process for adding new analyses is:
+
+1. Create a new database table for storing the analysis, following the column tyes and names of 'analysis-aci'.
+
+2. Add the analysis table to the deleteAllAnalyses() function of audioBlastAnalyse R package.
+
+3. Implement the analysis in audioBlastAnalyse R package.
+
+4. Implement a module for https://api.audioblast.org to provide API access to the analysis.
+
+5. Make arrangements for existing recordings to be queued for analysis if required.

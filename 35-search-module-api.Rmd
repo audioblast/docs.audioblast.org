@@ -1,0 +1,45 @@
+# Search module API
+
+The search module API allows for processing of a search term on audioblast.org, and handles the display of relevant search results. Modules are typically related to a particular data type (i.e. a table in the audioblast database), although there are more abstract modules that solely process search terms in order to allow them to be processed by other modules.
+
+## Search API class
+
+### init()
+
+### displayPrototype()
+
+Create a region on the results page for displaying search results.
+
+### parse()
+
+Parses the search term for relevant terms, and may modify terms.
+
+### display()
+
+Handles the display of search results to the user.
+
+
+### searchSuggests()
+
+Provides a short list of indicative search terms that may be handled by the module. This is used to suggest search terms on the audioblast.org homepage.
+
+## Current audioblast.org search modules
+
+### Pythia
+
+Pythia uses an audioBlast API to match words in the search term to tokens using direct access to the audioBlast database.
+
+### Linnaeus: taxonomic name information and processing
+
+The parse() function in Linnaeus takes a taxon name token identified by Pythia and converts it to a taxon name with rank token.
+
+Linnaeus also handles the taxon info box, that provides search navigation through parent taxa.
+
+### King Solomon's Ring
+
+King Solomon's Ring converts everyday terms relating to animal behavior into named trait with value tokens (e.g. silent to sound production method being equal to None.)
+
+### Rosetta
+
+Rosetta handles the conversion of emoji in search terms to taxonomic names using the Phymoji package.
+

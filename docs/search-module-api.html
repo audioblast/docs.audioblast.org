@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 audioBlastIngest | docs.audioblast.org</title>
+  <title>Chapter 9 Search module API | docs.audioblast.org</title>
   <meta name="description" content="Documentation of the audioBlast system." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 audioBlastIngest | docs.audioblast.org" />
+  <meta property="og:title" content="Chapter 9 Search module API | docs.audioblast.org" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Documentation of the audioBlast system." />
   <meta name="github-repo" content="audioblast/docs.audioblast.org" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 audioBlastIngest | docs.audioblast.org" />
+  <meta name="twitter:title" content="Chapter 9 Search module API | docs.audioblast.org" />
   
   <meta name="twitter:description" content="Documentation of the audioBlast system." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="mapping-columns.html"/>
+<link rel="prev" href="audioblast.html"/>
+<link rel="next" href="maintenence-tasks.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -228,25 +228,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="audioblastingest" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> audioBlastIngest<a href="audioblastingest.html#audioblastingest" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The ingest service is responsible for bringing data about recordings, deployments, annotation, taxa and traits into the audioBlast system. Data sources are specified as modules within the audioBlast API, which give details of each data source and the processing that is expected to be performed by the ingest process. The ingest process itself is managed on audioBlast infrastructure by the audioBlastIngest package. This package obtains data from the sources specified in the API modules, performs and requested transformations, and loads the data into the audioBlast database.</p>
-<p>Note: The database generates analysis tasks using triggers as data is inserted or updated, however the analyses are performed by a separate processes to the ingest.</p>
-<p>Updates are handled periodically (generally nightly) by the ingest server. Creating an ingest task is a simple three step process.</p>
-<ol style="list-style-type: decimal">
-<li><p>Third party publishes data online.</p></li>
-<li><p>audioBlast team work with third party to create an API module to map the published data on to audioBlast data structures.</p></li>
-<li><p>The audioBlastIngest package handles the import of the data.</p></li>
-</ol>
+<div id="search-module-api" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Search module API<a href="search-module-api.html#search-module-api" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The search module API allows for processing of a search term on audioblast.org, and handles the display of relevant search results. Modules are typically related to a particular data type (i.e. a table in the audioblast database), although there are more abstract modules that solely process search terms in order to allow them to be processed by other modules.</p>
+<div id="search-api-class" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Search API class<a href="search-module-api.html#search-api-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="init" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> init()<a href="search-module-api.html#init" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="displayprototype" class="section level3 hasAnchor" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> displayPrototype()<a href="search-module-api.html#displayprototype" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Create a region on the results page for displaying search results.</p>
+</div>
+<div id="parse" class="section level3 hasAnchor" number="9.1.3">
+<h3><span class="header-section-number">9.1.3</span> parse()<a href="search-module-api.html#parse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Parses the search term for relevant terms, and may modify terms.</p>
+</div>
+<div id="display" class="section level3 hasAnchor" number="9.1.4">
+<h3><span class="header-section-number">9.1.4</span> display()<a href="search-module-api.html#display" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Handles the display of search results to the user.</p>
+</div>
+<div id="searchsuggests" class="section level3 hasAnchor" number="9.1.5">
+<h3><span class="header-section-number">9.1.5</span> searchSuggests()<a href="search-module-api.html#searchsuggests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Provides a short list of indicative search terms that may be handled by the module. This is used to suggest search terms on the audioblast.org homepage.</p>
+</div>
+</div>
+<div id="current-audioblast.org-search-modules" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Current audioblast.org search modules<a href="search-module-api.html#current-audioblast.org-search-modules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pythia" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Pythia<a href="search-module-api.html#pythia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pythia uses an audioBlast API to match words in the search term to tokens using direct access to the audioBlast database.</p>
+</div>
+<div id="linnaeus-taxonomic-name-information-and-processing" class="section level3 hasAnchor" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> Linnaeus: taxonomic name information and processing<a href="search-module-api.html#linnaeus-taxonomic-name-information-and-processing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The parse() function in Linnaeus takes a taxon name token identified by Pythia and converts it to a taxon name with rank token.</p>
+<p>Linnaeus also handles the taxon info box, that provides search navigation through parent taxa.</p>
+</div>
+<div id="king-solomons-ring" class="section level3 hasAnchor" number="9.2.3">
+<h3><span class="header-section-number">9.2.3</span> King Solomon’s Ring<a href="search-module-api.html#king-solomons-ring" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>King Solomon’s Ring converts everyday terms relating to animal behavior into named trait with value tokens (e.g. silent to sound production method being equal to None.)</p>
+</div>
+<div id="rosetta" class="section level3 hasAnchor" number="9.2.4">
+<h3><span class="header-section-number">9.2.4</span> Rosetta<a href="search-module-api.html#rosetta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Rosetta handles the conversion of emoji in search terms to taxonomic names using the Phymoji package.</p>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="mapping-columns.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="audioblast.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="maintenence-tasks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -277,7 +312,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/02-ingest.Rmd",
+"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/35-search-module-api.Rmd",
 "text": "Edit"
 },
 "history": {

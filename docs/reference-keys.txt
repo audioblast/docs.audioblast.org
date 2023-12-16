@@ -28,5 +28,17 @@ legacy-mode
 getting-tasks
 removing-completed-tasks
 audioblast.org
+search-module-api
+search-api-class
+init
+displayprototype
+parse
+display
+searchsuggests
+current-audioblast.org-search-modules
+pythia
+linnaeus-taxonomic-name-information-and-processing
+king-solomons-ring
+rosetta
 maintenence-tasks
 cron-tasks

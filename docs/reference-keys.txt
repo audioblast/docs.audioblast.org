@@ -27,6 +27,11 @@ audioblastanalyse-implementation
 legacy-mode
 getting-tasks
 removing-completed-tasks
+analysis-infrastructure
+natural-history-museum-high-performance-compute
+conda-environments
+ab-r2
+birdnet
 audioblast.org
 search-module-api
 search-api-class

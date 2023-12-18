@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>docs.audioblast.org</title>
+  <title>Chapter 8 Analysis infrastructure | docs.audioblast.org</title>
   <meta name="description" content="Documentation of the audioBlast system." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="docs.audioblast.org" />
+  <meta property="og:title" content="Chapter 8 Analysis infrastructure | docs.audioblast.org" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Documentation of the audioBlast system." />
   <meta name="github-repo" content="audioblast/docs.audioblast.org" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="docs.audioblast.org" />
+  <meta name="twitter:title" content="Chapter 8 Analysis infrastructure | docs.audioblast.org" />
   
   <meta name="twitter:description" content="Documentation of the audioBlast system." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introduction.html"/>
+<link rel="prev" href="the-task-queue-system.html"/>
+<link rel="next" href="audioblast.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -235,23 +235,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">docs.audioblast.org</h1>
-<p class="author"><em>Ed Baker</em></p>
-<p class="date"><em>2023-12-18</em></p>
+<div id="analysis-infrastructure" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Analysis infrastructure<a href="analysis-infrastructure.html#analysis-infrastructure" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="natural-history-museum-high-performance-compute" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Natural History Museum High-Performance Compute<a href="analysis-infrastructure.html#natural-history-museum-high-performance-compute" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Natural History Museum has a high-performance compute cluster that can be used for audio analysis. The cluster is managed using SLURM and environments are managed using conda.</p>
+<div id="conda-environments" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> conda environments<a href="analysis-infrastructure.html#conda-environments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ab-r2" class="section level4 hasAnchor" number="8.1.1.1">
+<h4><span class="header-section-number">8.1.1.1</span> ab-r2<a href="analysis-infrastructure.html#ab-r2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>This environment contains R packages for acoustic analysis, and also has audioBlastAnalyse installed to manage analyses.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="analysis-infrastructure.html#cb6-1" tabindex="-1"></a><span class="ex">conda</span> activate ab-r2</span></code></pre></div>
 </div>
-<div id="about-audioblast" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> About audioBlast<a href="index.html#about-audioblast" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>audioBlast is a project to make the world’s collections of bioacoustic and ecoacoustic recordings findable, accessible, and searchable.</p>
+<div id="birdnet" class="section level4 hasAnchor" number="8.1.1.2">
+<h4><span class="header-section-number">8.1.1.2</span> birdnet<a href="analysis-infrastructure.html#birdnet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>This is a Python environment for running BirdNET analyses.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="analysis-infrastructure.html#cb7-1" tabindex="-1"></a><span class="ex">conda</span> activate birdnet</span></code></pre></div>
 
+</div>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-task-queue-system.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="audioblast.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -282,7 +293,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/index.Rmd",
+"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/20-analysis-infra.Rmd",
 "text": "Edit"
 },
 "history": {

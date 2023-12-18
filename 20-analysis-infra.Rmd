@@ -1,0 +1,23 @@
+# Analysis infrastructure
+
+## Natural History Museum High-Performance Compute
+
+The Natural History Museum has a high-performance compute cluster that can be used for audio analysis. The cluster is managed using SLURM and environments are managed using conda.
+
+### conda environments
+
+#### ab-r2
+
+This environment contains R packages for acoustic analysis, and also has audioBlastAnalyse installed to manage analyses.
+
+````{bash, eval = FALSE}
+conda activate ab-r2
+````
+
+#### birdnet
+
+This is a Python environment for running BirdNET analyses.
+
+````{bash, eval = FALSE}
+conda activate birdnet
+````

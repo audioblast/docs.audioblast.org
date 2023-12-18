@@ -120,7 +120,7 @@
 
 \title{docs.audioblast.org}
 \author{Ed Baker}
-\date{2023-12-16}
+\date{2023-12-18}
 
 \begin{document}
 \maketitle
@@ -338,6 +338,39 @@ The \texttt{get-tasks()} stored procedure is accessed by using \texttt{fetchDown
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{deleteToDo}\NormalTok{(db, source, id, task, process\_id)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{analysis-infrastructure}{%
+\chapter{Analysis infrastructure}\label{analysis-infrastructure}}
+
+\hypertarget{natural-history-museum-high-performance-compute}{%
+\section{Natural History Museum High-Performance Compute}\label{natural-history-museum-high-performance-compute}}
+
+The Natural History Museum has a high-performance compute cluster that can be used for audio analysis. The cluster is managed using SLURM and environments are managed using conda.
+
+\hypertarget{conda-environments}{%
+\subsection{conda environments}\label{conda-environments}}
+
+\hypertarget{ab-r2}{%
+\subsubsection{ab-r2}\label{ab-r2}}
+
+This environment contains R packages for acoustic analysis, and also has audioBlastAnalyse installed to manage analyses.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{conda}\NormalTok{ activate ab{-}r2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{birdnet}{%
+\subsubsection{birdnet}\label{birdnet}}
+
+This is a Python environment for running BirdNET analyses.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{conda}\NormalTok{ activate birdnet}
 \end{Highlighting}
 \end{Shaded}
 

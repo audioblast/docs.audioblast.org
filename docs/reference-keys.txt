@@ -4,10 +4,12 @@ introduction
 design-philosophy
 analyse-everything-once-in-advance
 audioblastingest
+source-modules
+fields
 mapping-columns
 optional-processing-done-by-audioblast
 specifying-processors
-sourcer-automatically-prepred-a-source-column
+sourcer-automatically-prepend-a-source-column
 date2dateantime-date-and-time-mapping
 audioblastanalyse
 requirements

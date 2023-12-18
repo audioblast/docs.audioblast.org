@@ -447,7 +447,7 @@ Rosetta handles the conversion of emoji in search terms to taxonomic names using
 \hypertarget{cron-tasks}{%
 \section{cron tasks}\label{cron-tasks}}
 
-Every 15 minutes a cron job on the unp-audio-2 virtual machine updates the total analysis counts by calling the API endpoint /standalone/analysis/fetch\_analysis\_counts/ without caching (?cache=0).
+Every 5 minutes a cron job on the unp-audio-2 virtual machine updates the total analysis counts by calling the API endpoint /standalone/analysis/fetch\_analysis\_counts/ without caching (?cache=0).
 
 Other slow-running queries that impact the speed of the user interface can be added here if necessary.
 

@@ -237,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 10</span> Maintenence tasks<a href="maintenence-tasks.html#maintenence-tasks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="cron-tasks" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> cron tasks<a href="maintenence-tasks.html#cron-tasks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Every 15 minutes a cron job on the unp-audio-2 virtual machine updates the total analysis counts by calling the API endpoint /standalone/analysis/fetch_analysis_counts/ without caching (?cache=0).</p>
+<p>Every 5 minutes a cron job on the unp-audio-2 virtual machine updates the total analysis counts by calling the API endpoint /standalone/analysis/fetch_analysis_counts/ without caching (?cache=0).</p>
 <p>Other slow-running queries that impact the speed of the user interface can be added here if necessary.</p>
 
 </div>

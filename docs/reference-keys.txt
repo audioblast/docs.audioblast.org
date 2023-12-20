@@ -3,6 +3,7 @@ about-audioblast
 introduction
 design-philosophy
 analyse-everything-once-in-advance
+infrastructure
 audioblastingest
 source-modules
 fields

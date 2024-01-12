@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Adding new analyses | docs.audioblast.org</title>
+  <title>Chapter 11 Maintenence notices | docs.audioblast.org</title>
   <meta name="description" content="Documentation of the audioBlast system." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Adding new analyses | docs.audioblast.org" />
+  <meta property="og:title" content="Chapter 11 Maintenence notices | docs.audioblast.org" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Documentation of the audioBlast system." />
   <meta name="github-repo" content="audioblast/docs.audioblast.org" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Adding new analyses | docs.audioblast.org" />
+  <meta name="twitter:title" content="Chapter 11 Maintenence notices | docs.audioblast.org" />
   
   <meta name="twitter:description" content="Documentation of the audioBlast system." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="audioblastanalyse.html"/>
-<link rel="next" href="the-task-queue-system.html"/>
+<link rel="prev" href="maintenence-tasks.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -234,16 +234,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="adding-new-analyses" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Adding new analyses<a href="adding-new-analyses.html#adding-new-analyses" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The process for adding new analyses is:</p>
-<ol style="list-style-type: decimal">
-<li><p>Create a new database table for storing the analysis, following the column tyes and names of ‘analysis-aci’.</p></li>
-<li><p>Add the analysis table to the deleteAllAnalyses() function of audioBlastAnalyse R package.</p></li>
-<li><p>Implement the analysis in audioBlastAnalyse R package.</p></li>
-<li><p>Implement a module for <a href="https://api.audioblast.org" class="uri">https://api.audioblast.org</a> to provide API access to the analysis.</p></li>
-<li><p>Make arrangements for existing recordings to be queued for analysis if required.</p></li>
-</ol>
+<div id="maintenence-notices" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Maintenence notices<a href="maintenence-notices.html#maintenence-notices" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>These are created and displayed on the status.acousti.cloud server, at present by directly editing the table notices in the status MySQL database. The active column is set to 1 for active notices.</p>
 
 </div>
             </section>
@@ -251,8 +244,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="audioblastanalyse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-task-queue-system.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="maintenence-tasks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -283,7 +276,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/11-adding_analyses.Rmd",
+"link": "https://github.com/audioblast/docs.audioblast.org/edit/master/82-maintenence-notices.Rmd",
 "text": "Edit"
 },
 "history": {

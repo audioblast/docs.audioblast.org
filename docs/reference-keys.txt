@@ -49,3 +49,4 @@ king-solomons-ring
 rosetta
 maintenence-tasks
 cron-tasks
+maintenence-notices

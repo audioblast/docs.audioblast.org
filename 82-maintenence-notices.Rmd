@@ -1,0 +1,3 @@
+# Maintenence notices
+
+These are created and displayed on the status.acousti.cloud server, at present by directly editing the table notices in the status MySQL database. The active column is set to 1 for active notices.

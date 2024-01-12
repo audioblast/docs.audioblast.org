@@ -120,7 +120,7 @@
 
 \title{docs.audioblast.org}
 \author{Ed Baker}
-\date{2023-12-18}
+\date{2024-01-12}
 
 \begin{document}
 \maketitle
@@ -450,6 +450,11 @@ Rosetta handles the conversion of emoji in search terms to taxonomic names using
 Every 5 minutes a cron job on the unp-audio-2 virtual machine updates the total analysis counts by calling the API endpoint /standalone/analysis/fetch\_analysis\_counts/ without caching (?cache=0).
 
 Other slow-running queries that impact the speed of the user interface can be added here if necessary.
+
+\hypertarget{maintenence-notices}{%
+\chapter{Maintenence notices}\label{maintenence-notices}}
+
+These are created and displayed on the status.acousti.cloud server, at present by directly editing the table notices in the status MySQL database. The active column is set to 1 for active notices.
 
   \bibliography{book.bib,packages.bib}
 
